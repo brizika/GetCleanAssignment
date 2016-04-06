@@ -1,38 +1,17 @@
-# Get-Clean-Assignment
- you need to "run_analysis.R" is the script that
-1. Merges the training and the test sets to create one data set.
-2. Extracts only the measurements on the mean and standard deviation for each measurement.
-3. Uses descriptive activity names to name the activities in the data set
-4. Appropriately labels the data set with descriptive activity names.
-5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-Please go through that script. I've commented and described every sections clearly. I'll also go through briefly in this section
+# Getting and Cleaning Data - Course Project
 
-You're working directory should contain "UCI HAR Dataset" directory. data.table and reshape2 package will be installed if it is not 
-installed previously. This section checks if it is installed, if not it install data.table package. Same is for reshape2.
-    if (!require("data.table"))
-    {
-      install.packages("data.table")
-    }
-  
-  #for test data --  
- activity file,features is loaded  to get activity labels and features. Extract  mean and standard deviation features with grepl.
- assign every data of X_test with column name from features. Extract  mean and standard deviation column names . assign column name and then bind data.
- 
- #Same process is for train data
- 
- Finally, Merges the training and the test sets to create one data set and Create independent tidy data set with the average of each variable for each activity and each subject.
+This is the course project for the Getting and Cleaning Data Coursera course.
+The R script, `run_analysis.R`, does the following:
 
+1. Download the dataset if it does not already exist in the working directory
+2. Load the activity and feature info
+3. Loads both the training and test datasets, keeping only those columns which
+   reflect a mean or standard deviation
+4. Loads the activity and subject data for each dataset, and merges those
+   columns with the dataset
+5. Merges the two datasets
+6. Converts the `activity` and `subject` columns into factors
+7. Creates a tidy dataset that consists of the average (mean) value of each
+   variable for each subject and activity pair.
 
-Final Summary 
- How run_analysis.R implements the above steps:
-
-1) Require reshape2 and data.table libraries
-2) Load both test and train data set
-3) Load the features and activity labels
-4) Extract only mean and standard deviation column names and data
-5) Process the data. There are two parts processing test and train data respectively
-6) Merge data set
-7) Find the average
-8) Write the data in a txt file
-
-
+The end result is shown in the file `tidy.txt`.
